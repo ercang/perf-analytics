@@ -1,4 +1,4 @@
-export default class PerformanceCollector {
+class PerformanceCollector {
   constructor(serverUUID, apiEndPoint, extendedInformation = {}) {
     // run measurements
     this.performanceData = this.collectData();
