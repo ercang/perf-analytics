@@ -1,0 +1,20 @@
+{
+  "name": "perf-analytics",
+  "version": "1.0.0",
+  "description": "Simple analytics library to measure client performance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ercang/perf-analytics.git"
+  },
+  "author": "Ercan Gercek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ercang/perf-analytics/issues"
+  },
+  "homepage": "https://github.com/ercang/perf-analytics#readme",
+  "dependencies": {}
+}
