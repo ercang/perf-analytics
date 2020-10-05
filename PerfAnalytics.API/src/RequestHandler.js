@@ -1,10 +1,13 @@
+const uuid = require('uuid');
+
 class RequestHandler {
     constructor({ dbAccess }) {
         this.dbAccess = dbAccess;
     }
 
     async handleReportRequest(req, res) {
-        const entities = await this.dbAccess.getPerformanceEntities(req.body.serverUUID);
+        const serverUUID = req.params['uuid'];
+        const entities = await this.dbAccess.getPerformanceEntities(serverUUID);
         res.send({ data: entities.map((v) => v.toObject()) });
     }
 
@@ -15,6 +18,7 @@ class RequestHandler {
         const pathname = data.pathname;
         const performanceData = data.performanceData;
         const extendedInformation = data.extendedInformation;
+        const date = new Date();
 
         // find site
         const site = await this.dbAccess.getSiteByUUID(serverUUID);
@@ -22,7 +26,7 @@ class RequestHandler {
             res.status(400); // bad request
             res.send();
         } else {
-            await this.dbAccess.createNewPerformanceEntity({ serverUUID, origin, pathname, performanceData, extendedInformation });
+            await this.dbAccess.createNewPerformanceEntity({ serverUUID, origin, pathname, performanceData, extendedInformation, date });
             res.send();
         }
     }
@@ -33,9 +37,9 @@ class RequestHandler {
     }
 
     async handleNewSiteRequest(req, res) {
-        let uuid = req.body.uuid.trim();
+        let id = uuid.v4();
         let name = req.body.name.trim();
-        const site = await this.dbAccess.createNewSite(uuid, name);
+        const site = await this.dbAccess.createNewSite(id, name);
         res.send({ site: { id: site._id, name: site.name, uuid: site.uuid } });
     }
 }

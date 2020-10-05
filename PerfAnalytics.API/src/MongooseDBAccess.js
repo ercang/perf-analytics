@@ -35,8 +35,8 @@ class MongooseDBAccess {
         return SiteModel.findOne({ uuid }).exec();
     }
 
-    async createNewPerformanceEntity({ serverUUID, origin, pathname, performanceData, extendedInformation }) {
-        const entity = new PerformanceEntityModel({ serverUUID, origin, pathname, performanceData, extendedInformation });
+    async createNewPerformanceEntity({ serverUUID, origin, pathname, performanceData, extendedInformation, date }) {
+        const entity = new PerformanceEntityModel({ serverUUID, origin, pathname, performanceData, extendedInformation, date });
         await entity.save();
         return entity;
     }

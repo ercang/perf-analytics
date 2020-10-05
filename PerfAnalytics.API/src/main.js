@@ -9,15 +9,23 @@ const mongooseDBAccess = new MongooseDBAccess();
 mongooseDBAccess.init();
 
 const RequestHandler = require('./RequestHandler');
-const requestHandler = new RequestHandler({dbAccess: mongooseDBAccess});
+const requestHandler = new RequestHandler({ dbAccess: mongooseDBAccess });
 
+// use body parse for post data
 app.use(bodyParser.json());
 
 // enable gzip
 app.use(compression());
 
+// enable all cross origin requests
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // register end-point handlers
-app.get('/report', requestHandler.handleReportRequest.bind(requestHandler));
+app.get('/report/:uuid', requestHandler.handleReportRequest.bind(requestHandler));
 app.post('/report', requestHandler.handleNewReportRequest.bind(requestHandler));
 
 app.get('/site', requestHandler.handleSitesRequest.bind(requestHandler));

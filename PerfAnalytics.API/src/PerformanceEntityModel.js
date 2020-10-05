@@ -6,6 +6,7 @@ const performanceEntitySchema = new mongoose.Schema({
     pathname: String,
     performanceData: Object,
     extendedInformation: Object,
+    date: Date
 });
 
 const PerformanceEntityModel = mongoose.model('PerformanceEntityModel', performanceEntitySchema);
