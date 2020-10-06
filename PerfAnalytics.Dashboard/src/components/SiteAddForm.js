@@ -1,5 +1,5 @@
 import React from 'react';
-import DashboardConnector from './DashboardConnector'
+import DashboardConnector from '../helpers/DashboardConnector'
 
 export default class SiteAddForm extends React.Component {
   constructor(props) {

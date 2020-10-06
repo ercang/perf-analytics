@@ -1,7 +1,7 @@
 import React from 'react';
 import SiteAddForm from './SiteAddForm';
 
-import DashboardConnector from './DashboardConnector'
+import DashboardConnector from '../helpers/DashboardConnector'
 
 function SiteList(props) {
   const sites = props.sites ? props.sites : [];

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SiteListContainer from './SiteListContainer'
 import SiteReport from './SiteReport'
-import DashboardConnector from './DashboardConnector'
+import DashboardConnector from '../helpers/DashboardConnector'
 
 export default class App extends React.Component {
   constructor(props) {
