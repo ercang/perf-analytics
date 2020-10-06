@@ -8,7 +8,7 @@ class MongooseDBAccess {
     }
 
     init() {
-        mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+        mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, { useNewUrlParser: true });
         const db = mongoose.connection;
         db.on('error', this.onConnectionError.bind(this));
         db.once('open', () => {

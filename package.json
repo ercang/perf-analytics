@@ -4,7 +4,7 @@
   "description": "Simple analytics library to measure client performance.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd PerfAnalytics.API && npm run test && cd ../PerfAnalytics.Dashboard && npm run test"
   },
   "repository": {
     "type": "git",

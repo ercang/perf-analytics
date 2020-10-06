@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const app = express();
 const http = require('http').createServer(app);
+require('dotenv').config();
 
-const MongooseDBAccess = require('./MongooseDBAccess');
+const MongooseDBAccess = require('./db/MongooseDBAccess');
 const mongooseDBAccess = new MongooseDBAccess();
 mongooseDBAccess.init();
 
@@ -34,6 +35,6 @@ app.post('/site', requestHandler.handleNewSiteRequest.bind(requestHandler));
 // serve directory over HTTP
 app.use(express.static('../public'))
 
-const serverPort = 80;
+const serverPort = process.env.PORT || 80;
 http.listen(serverPort, () => console.log(`PerfAnalytics.API is listening on port ${serverPort}!`));
 
