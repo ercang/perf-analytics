@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cd PerfAnalytics.API && npm run test && cd ../PerfAnalytics.Dashboard && npm run test",
     "test-ci": "cd PerfAnalytics.API && npm ci && npm run test && cd ../PerfAnalytics.Dashboard && npm ci && npm run test",
-    "build": "cd PerfAnalytics.Dashboard && npm install && npm run build && cp -R build/. ../public/",
+    "build": "cd PerfAnalytics.API && npm install && cd ../PerfAnalytics.Dashboard && npm install && npm run build && cp -R build/. ../public/",
     "start-server": "cd PerfAnalytics.API && npm run start",
     "start": "npm run build && npm run start-server"
   },
