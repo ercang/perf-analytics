@@ -1,4 +1,4 @@
-# perf-analytics
+# Perf-Analytics
 Simple analytics library to measure client performance.
 
 You can check the demo at https://ercang-perf-analytics.herokuapp.com/
@@ -14,7 +14,12 @@ This is the back end of this application. It connects to a mongodb server and st
 - **/site** (POST) Adds new website and generates a UUID
 
 ## PerfAnalytics.Dashboard
-This is the react js application to display recorded analytics data.
+This is the react js application to display recorded analytics data. The project is consist of 5 components.
+- **App.js** Container application.
+- **SiteListContainer.js** Contains site list and the add new site form.
+- **SiteAddForm.js** Contains the form for adding a new site.
+- **SiteReport.js** Contains report for the selected site.
+- **ReportLineChart.js** This component is used for drawing reports that are collected from clients.
 
 ## PerfAnalytics.JS
 This is the client source for collecting performance metrics from the browser.
@@ -48,3 +53,14 @@ cd PerfAnalytics.API && npm run start
 cd PerfAnalytics.API && npm run test
 ```
 
+## How to run in a Docker container
+This application can be run in a docker container. Dockerfile is already provided.
+
+```
+# create docker image
+docker build -t perfanalytics .
+
+# run docker image
+docker run -p 3000:80 -d perfanalytics
+
+```
